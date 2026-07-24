@@ -18,6 +18,7 @@ import { articles } from "../data/blog";
 import Avatar from "../components/Avatar";
 import { State } from "../components/Layout";
 import ScrambleText from "../components/ScrambleText";
+import { profile } from "../data/profile";
 
 const IndexPage = () => {
   const [isOpened, setIsOpened] = React.useState(true);
@@ -43,14 +44,14 @@ const IndexPage = () => {
           <div className="w-[90svw] banner-holder z-50 pt-[100px] sm:pointer-events-none fixed flex justify-center items-center">
             <h1 className="banner-title flex text-[var(--tw-text-gray-primary)] flex-col items-end h-full text-right font-bold w-[300px] flex-shrink-0">
               <ScrambleText
-                text="Cesar"
+                text="La Raven"
                 className="scramble-text min-w-[400px]"
                 duration={3}
                 placeholder="."
               />
 
               <ScrambleText
-                text="Oliveira"
+                text="Gordon (Larav)"
                 className="scramble-text min-w-[400px]"
                 duration={3}
                 placeholder="."
@@ -62,13 +63,13 @@ const IndexPage = () => {
                 A{" "}
                 <strong className="text-[var(--tw-text-gray-primary)] font-bold">
                   <ScrambleText
-                    text="Front-end Engineer"
+                    text={profile.role}
                     className="scramble-text inline-block"
                     duration={2}
                     placeholder="."
                   />
                 </strong>{" "}
-                having fun crafting digital experiences
+                building reliable AI systems grounded in human judgment
               </p>
               <Shortcut text="to start" />
             </div>
@@ -80,7 +81,7 @@ const IndexPage = () => {
             className="blog-ticker-title  text-[var(--tw-text-gray-secondary)] fixed z-[100] left-[20px] sm:text-[18px] text-[14px]"
           >
             <ScrambleText
-              text={`Latest posts ↓`}
+              text="Blog launching soon"
               className="scramble-text"
               duration={2}
             />
@@ -91,9 +92,9 @@ const IndexPage = () => {
               className="scramble-text"
               duration={2}
             />
-            <a className="underline " href="mailto:contact@cesarolvr.com">
+            <a className="underline " href={`mailto:${profile.email}`}>
               <ScrambleText
-                text={`contact@cesarolvr.com`}
+                text={profile.email}
                 className="scramble-text"
                 duration={2}
               />
@@ -145,4 +146,4 @@ const IndexPage = () => {
 
 export default IndexPage;
 
-export const Head = () => <title>cesarolvr</title>;
+export const Head = () => <title>La Raven Gordon (Larav) | AI Brain Specialist</title>;

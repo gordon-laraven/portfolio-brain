@@ -11,11 +11,11 @@ const NotFound = () => {
   return (
     <div className="not-found">
       <Loader isOpened={true} linkBack={true} limit={404} numberSize="!text-[100px]" />
-      <Link to="/">go back to cesarolvr.com</Link>
+      <Link to="/">go back to La Raven Gordon's site</Link>
     </div>
   );
 };
 
-export const Head = () => <title>Nothing here | cesarolvr</title>;
+export const Head = () => <title>Nothing here | La Raven Gordon</title>;
 
 export default NotFound;

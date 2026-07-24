@@ -8,12 +8,8 @@ export const onRenderBody = ({ setHtmlAttributes, setHeadComponents }) => {
     <meta
       key="description"
       name="description"
-      content="Cesar Oliveira, a frontend engineer creating cool digital experiences and sharing knowledge about web development, design, and technology."
+      content="La Raven Gordon is an AI Brain Specialist who helps large language models reason more reliably and businesses build durable AI systems."
     />,
-    
-    // Google APIs/SDKs
-    <link key="google-apis-preconnect" rel="preconnect" href="https://www.google.com.br" />,
-    <link key="google-apis-dns-prefetch" rel="dns-prefetch" href="https://www.google.com.br" />,
     
     // Google Fonts
     <link key="google-fonts-preconnect" rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />,

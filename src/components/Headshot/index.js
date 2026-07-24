@@ -7,7 +7,7 @@ import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js"
 import { State } from "../Layout";
 
 // Images
-import headshot from "../../images/headshot.jpg";
+import headshot from "../../images/headshot.png";
 
 // Styles
 import "./index.scss";
@@ -427,7 +427,7 @@ const Headshot = () => {
     initWaves();
   }, []);
 
-  return <canvas class="webgl cursor-grab"></canvas>;
+  return <canvas className="webgl cursor-grab"></canvas>;
 };
 
 export default Headshot;

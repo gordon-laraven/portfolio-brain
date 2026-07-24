@@ -1,173 +1,57 @@
 import * as React from "react";
-
-import { FiCopy } from "@react-icons/all-files/fi/FiCopy";
 import { FiDownload } from "@react-icons/all-files/fi/FiDownload";
-import { FiAward } from "@react-icons/all-files/fi/FiAward";
 import { FiGithub } from "@react-icons/all-files/fi/FiGithub";
-import { FiCalendar } from "@react-icons/all-files/fi/FiCalendar";
-import { FiInstagram } from "@react-icons/all-files/fi/FiInstagram";
-import { FiBook } from "@react-icons/all-files/fi/FiBook";
+import { FiLinkedin } from "@react-icons/all-files/fi/FiLinkedin";
 import { FiMail } from "@react-icons/all-files/fi/FiMail";
-import { FiCoffee } from "@react-icons/all-files/fi/FiCoffee";
+import { FiBook } from "@react-icons/all-files/fi/FiBook";
+import { profile } from "./profile";
+import laRavenCV from "../files/la-raven-gordon-resume.docx";
 
-// Files
-import cesarolvrCV from "../files/cesar-oliveira-resume.pdf";
-
-const bioDescription = `A decade of experience as a Software Engineer (Front-end focused), working on
-large-scale and high-impact projects for digital companies, where
-I've crafted digital acquisition experiences, dashboards,
-awwwards-like websites, design systems, animations libraries,
-mobile apps and email marketing tools. I'm really focused about resolve real problems through technology,
-specifically web development and creative development.`;
+const bioDescription = `I am an AI Brain Development Specialist working on both sides of the same problem: helping large language models reason more reliably, and helping businesses build and train AI systems that last. My work spans confidential generative-AI model training and evaluation, including preference ranking, adversarial red-teaming, refusal and logic auditing, rubric design, and scientific fact-checking. I bring that same foundation-first discipline to enterprise AI implementation, combining technical rigor, business systems, and human judgment.`;
 
 const careerPath = [
   {
-    role: "Tech Lead | Senior Front-end Engineer",
-    details: `Itaú Unibanco | São Paulo, Brazil | 2023 -> current`,
+    role: "Enterprise AI Brain Specialist",
+    details: "Freelance / Independent | Remote | 2023 - Present",
+    description: "Trains and evaluates LLMs for scientific and enterprise applications; designs evaluation frameworks, model-validation data pipelines, and practical AI systems.",
   },
   {
-    role: "Senior Front-end Engineer",
-    details: `Red Ventures | Charlotte, USA | 2018 -> 2023`,
-  },
-
-  {
-    role: "Front-end Engineer",
-    details: `Shawee | São Paulo, Brazil | 2017 -> 2018`,
+    role: "Small Business AI Implementation Specialist",
+    details: "Freelance / Independent | Remote | 2021 - Present",
+    description: "Helps clients assess AI readiness, establish knowledge systems and SOPs, and integrate AI sustainably rather than as a one-off tool.",
   },
   {
-    role: "Front-end Engineer",
-    details: `Horizon Four | São Paulo, Brazil | 2017 -> 2018`,
-  },
-  {
-    role: "A ”Handyman Engineer”",
-    details: `Ag. Empreendora | São Paulo, Brazil | 2016 -> 2017`,
+    role: "Field Sales Manager",
+    details: "Vector Marketing | Essex County, NJ | 2020 - Present",
+    description: "Builds structured systems, analytics, virtual training, and AI-supported customer-service workflows.",
   },
 ];
 
 const academyPath = [
-  {
-    role: "MicroMaster® Program in Algorithms and Data Structures",
-    details: `University of California, San Diego (UCSD) | California, USA | 2024 -> 2025`,
-  },
-  {
-    role: "Postgraduate Diploma (PgDip) in Leadership and Innovation",
-    details: `Getulio Vargas Foundation (FGV) | São Paulo, Brazil | 2023 -> 2024`,
-  },
-  {
-    role: "Summer Programm in Usability Engineering",
-    details: `University of São Paulo (USP) | São Paulo, Brazil | 2017 -> 2018`,
-  },
-  {
-    role: "Bachelor (BA) in Digital design",
-    details: `Anhembi Morumbi University (UAM) | São Paulo, Brazil | 2016 -> 2019`,
-  },
-  {
-    role: "Career and Technical Education (CTE) in Information Systems",
-    details: `São Paulo State Technical School (ETEC) | São Paulo, Brazil | 2013 -> 2015`,
-  },
+  { role: "AI & Machine Learning Certificate", details: "Columbia Engineering AI Boot Camp | 2024" },
+  { role: "B.S. in Biochemistry", details: "Rutgers University | 2016 - 2022" },
+  { role: "Leadership Academy Graduate", details: "Vector Marketing" },
 ];
 
 const openSourcePath = [
-  {
-    role: "My Github",
-    link: `https://github.com/cesarolvr`,
-  },
+  { role: "GitHub projects", details: "AI, data, and applied machine-learning work", link: profile.github },
 ];
 
 const volunteeringPath = [
-  {
-    role: "Community Builder",
-    details: `Nerdzão | São Paulo, Brazil | 2017 -> 2018`,
-    description: `- Contribute to create +15 of technology events/meetup in the town
-    - Promoted +5 talks/meetup across the country`,
-  },
-  {
-    role: "Teaching Assistant",
-    details: `{reprograma} | São Paulo, Brazil | 2018`,
-    description: `- Contributed as a teacher's assistant, clearing up some tech student issues about web development
-    - +10 new developers (women) formed and inserted into the industry`,
-  },
+  { role: "Scientific research & education", details: "Research publications and educational materials | 2018 - Present", description: "Work includes catnip oils, environmental impact, indigenous vegetables, and nutritional analysis." },
 ];
 
 const hackingPath = [
-  {
-    role: "journeylog.app",
-    details: `Habit tracker app | 2025`,
-    description: `-> React, Next.js, Supabase, Deno, TailwindCSS, Serverless functions, Figma and Vercel`,
-    link: `https://www.journeylog.app/`,
-  },
-  {
-    role: "murphy.js",
-    details: `A scroll based animation library | 2022`,
-    description: `-> VanillaJS, Intersection Observer API, Web Animations API and Nextra`,
-    link: `https://www.murphyjs.org/`,
-  },
+  { role: "Relocation Insights Application", details: "Conversational AI | LangChain + Google Gen AI", description: "A multi-source application built for useful, contextual relocation guidance.", link: profile.github },
+  { role: "Olympic Swimming Analysis", details: "Python data science", description: "Forecasting and statistical modeling across more than a century of Olympic data.", link: profile.github },
 ];
 
 const quickActionList = [
-  {
-    text: "Copy link",
-    nick: "c",
-    icon: <FiCopy />,
-    type: 1,
-    textToCopy: "https://cesarolvr.com",
-  },
-  {
-    text: "Download CV",
-    nick: "d",
-    icon: <FiDownload />,
-    target: cesarolvrCV,
-  },
-  {
-    text: "Know my career",
-    nick: "k",
-    icon: <FiAward />,
-    target: "https://www.linkedin.com/in/cesarolvr/",
-  },
-  {
-    text: "See my github",
-    nick: "g",
-    icon: <FiGithub />,
-    target: "https://github.com/cesarolvr/",
-  },
-  {
-    text: "Book a meeting",
-    nick: "b",
-    icon: <FiCalendar />,
-    target: "https://meet.google.com/",
-  },
-  {
-    text: "Send an email",
-    nick: "e",
-    icon: <FiMail />,
-    target: "mailto:contact@cesarolvr.com",
-  },
-  {
-    text: "Follow me on instagram",
-    nick: "g",
-    icon: <FiInstagram />,
-    target: "https://www.instagram.com/cesarolvr/",
-  },
-  {
-    text: "See my current readings",
-    nick: "r",
-    icon: <FiBook />,
-    target: "https://goodreads.com/cesarolvr",
-  },
-  {
-    text: "View source code",
-    nick: "r",
-    icon: <FiCoffee />,
-    target: "https://github.com/cesarolvr/cesarolvr-www",
-  },
+  { text: "Download CV", nick: "d", icon: <FiDownload />, target: laRavenCV },
+  { text: "View LinkedIn", nick: "l", icon: <FiLinkedin />, target: profile.linkedin },
+  { text: "See my GitHub", nick: "g", icon: <FiGithub />, target: profile.github },
+  { text: "Send an email", nick: "e", icon: <FiMail />, target: `mailto:${profile.email}` },
+  { text: "See my current readings", nick: "r", icon: <FiBook />, target: profile.goodreads },
 ];
 
-export {
-  bioDescription,
-  careerPath,
-  academyPath,
-  quickActionList,
-  openSourcePath,
-  volunteeringPath,
-  hackingPath,
-};
+export { bioDescription, careerPath, academyPath, quickActionList, openSourcePath, volunteeringPath, hackingPath };

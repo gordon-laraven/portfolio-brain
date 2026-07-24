@@ -3,23 +3,11 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `cesarolvr`,
-    siteUrl: `https://www.cesarolvr.com`,
+    title: `La Raven Gordon | AI Brain Specialist`,
+    siteUrl: `https://example.com`,
   },
   plugins: [
     `gatsby-plugin-postcss`,
-    {
-      resolve: `gatsby-plugin-google-gtag`,
-      options: {
-        trackingIds: [
-          "G-RBL0Y5VB5K",
-        ],
-        pluginConfig: {
-          head: true,
-          // anonymize_ip: true,
-        },
-      },
-    },
     "gatsby-plugin-sass",
     "gatsby-plugin-image",
     "gatsby-plugin-sitemap",
@@ -42,8 +30,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: "cesarolvr.com",
-        short_name: "cesarolvr",
+        name: "La Raven Gordon",
+        short_name: "Larav",
         start_url: "/",
         background_color: "#222222",
         theme_color: "#222222",
