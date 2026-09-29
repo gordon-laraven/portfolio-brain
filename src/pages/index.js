@@ -1,149 +1,61 @@
 import * as React from "react";
 
-// Components
-import Header from "../components/Header";
-import { Link } from "gatsby";
-import Footer from "../components/Footer";
-import Shortcut from "../components/Shortcut";
-import Loader from "../components/Loader";
-import Cursor from "../components/Cursor";
-import SplitTextAnimation from "../components/SplitText";
-
-// Styles
 import "../styles/global.scss";
 import "../styles/index.scss";
 
-// Content
-import { articles } from "../data/blog";
-import Avatar from "../components/Avatar";
-import { State } from "../components/Layout";
-import ScrambleText from "../components/ScrambleText";
-import { profile } from "../data/profile";
+const experience = ["OpenAI", "Meta", "Microsoft", "Mistral AI"];
+const services = [
+  ["01", "Model evaluation", "Clear rubrics, careful review, and useful feedback for language and multimodal systems that need to be more accurate, consistent, and dependable."],
+  ["02", "AI workflow design", "Practical AI workflows for small teams—grounded in the real work your people do, not a generic automation playbook."],
+  ["03", "Failure-mode review", "A close look at where an AI experience breaks: weak reasoning, unsafe edge cases, unclear instructions, and inconsistent outputs."],
+];
+const projects = [
+  ["Multimodal evaluation", "Visual grounding & spatial reasoning", "Evaluated image-and-text responses against a rubric for spatial accuracy, grounding, and explanation quality."],
+  ["Safety & alignment", "Adversarial red teaming", "Designed difficult prompts to expose safety and refusal failures, then documented patterns that needed stronger guardrails."],
+  ["Quality systems", "Rubric architecture", "Created criteria and calibrated example responses so distributed evaluators could make consistent, defensible judgments."],
+  ["Privacy & trust", "PII anonymization", "Reviewed and rewrote conversational data to protect sensitive identifiers while preserving meaning and natural flow."],
+];
 
-const IndexPage = () => {
-  const [isOpened, setIsOpened] = React.useState(true);
-  const avatarRef = React.useRef(null);
-  const { theme, onThemeChange } = React.useContext(State);
-
-  React.useEffect(() => {
-    setTimeout(() => {
-      setIsOpened(false);
-    }, 1500);
-  }, []);
-
-  return (
-    <>
-      <Cursor />
-      <div className="home overflow-hidden">
-        <Loader isOpened={isOpened} duration={1} />
-        <Header hideShortcut onThemeChange={onThemeChange} theme={theme} />
-        <main className="overflow-hidden">
-          <div className="avatar-section">
-            <Avatar theme={theme} />
-          </div>
-          <div className="w-[90svw] banner-holder z-50 pt-[100px] sm:pointer-events-none fixed flex justify-center items-center">
-            <h1 className="banner-title flex text-[var(--tw-text-gray-primary)] flex-col items-end h-full text-right font-bold w-[300px] flex-shrink-0">
-              <ScrambleText
-                text="La Raven"
-                className="scramble-text min-w-[400px]"
-                duration={3}
-                placeholder="."
-              />
-
-              <ScrambleText
-                text="Gordon (Larav)"
-                className="scramble-text min-w-[400px]"
-                duration={3}
-                placeholder="."
-              />
-            </h1>
-            <span className="w-[420px]"> </span>
-            <div className="banner-description w-[350px] mt-[0px] text-left 2xl:mt-[-30px] flex justify-end flex-col pl-[80px] items-start">
-              <p className="mb-4 sm:mb-7">
-                A{" "}
-                <strong className="text-[var(--tw-text-gray-primary)] font-bold">
-                  <ScrambleText
-                    text={profile.role}
-                    className="scramble-text inline-block"
-                    duration={2}
-                    placeholder="."
-                  />
-                </strong>{" "}
-                building reliable AI systems grounded in human judgment
-              </p>
-              <Shortcut text="to start" />
-            </div>
-          </div>
-
-          <Link
-            to="/blog"
-            title="soon"
-            className="blog-ticker-title  text-[var(--tw-text-gray-secondary)] fixed z-[100] left-[20px] sm:text-[18px] text-[14px]"
-          >
-            <ScrambleText
-              text="Blog launching soon"
-              className="scramble-text"
-              duration={2}
-            />
-          </Link>
-          <p className="fixed z-[100] sm:text-[18px] text-right text-underline sm:bottom-[60px] text-[14px] right-[20px] text-[var(--tw-text-gray-secondary)] bottom-[65px]">
-            <ScrambleText
-              text={`Want to hire me?`}
-              className="scramble-text"
-              duration={2}
-            />
-            <a className="underline " href={`mailto:${profile.email}`}>
-              <ScrambleText
-                text={profile.email}
-                className="scramble-text"
-                duration={2}
-              />
-            </a>
-          </p>
-          <div className="blog-ticker">
-            {articles.map((article, index) => {
-              return (
-                <div
-                  className="blog-ticker-wrapper"
-                  key={`${article.id}-${index}`}
-                >
-                  {article.posts
-                    .filter((post) => post.active)
-                    .reverse()
-                    .map((post, index) => {
-                      return (
-                        <a
-                          key={`${post.id}-${index}`}
-                          href={post.link}
-                          disabled={!post.active}
-                          className={`blog-ticker-item relative text-[var(--tw-text-gray-secondary)] bg-[var(--bg-primary)] border-[1px] border-[var(--border-primary)] hover:border-[var(--border-primary)] ${
-                            post.active
-                              ? ""
-                              : "-link-blocked cursor-not-allowed pointer-events-none"
-                          }`}
-                          title={post.active ? "Read now" : "Coming soon"}
-                        >
-                          <span className="emoji">{post.emoji}</span>
-                          {!post.active ? (
-                            <span className="absolute top-0 right-0 bg-white text-black px-2 py-1 font-bold text-xs">
-                              soon
-                            </span>
-                          ) : null}
-                          <h3>{post.title} -></h3>
-                        </a>
-                      );
-                    })}
-                </div>
-              );
-            })}
-          </div>
-        </main>
-        <Footer />
-      </div>
-    </>
-  );
-};
+const IndexPage = () => (
+  <div className="portfolio">
+    <header className="site-header">
+      <a className="wordmark" href="#top" aria-label="La Raven Gordon home">La Raven Gordon</a>
+      <nav aria-label="Primary navigation"><a href="#services">Services</a><a href="#work">Selected work</a><a href="#about">About</a></nav>
+      <a className="header-cta" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a>
+    </header>
+    <main id="top">
+      <section className="hero">
+        <div className="hero-copy">
+          <p className="eyebrow">AI evaluation · quality · implementation</p>
+          <h1>Build AI people can <em>trust.</em></h1>
+          <p className="hero-intro">I’m La Raven Gordon, an AI evaluation specialist and implementation consultant. I help teams find what is not working, define what good looks like, and build more reliable AI experiences.</p>
+          <div className="hero-actions"><a className="button button-primary" href="#contact">Start a conversation <span aria-hidden="true">↗</span></a><a className="text-link" href="#work">See selected work <span aria-hidden="true">↓</span></a></div>
+        </div>
+        <aside className="hero-note"><span>Independent specialist</span><p>Based in Brooklyn, working with ambitious teams wherever they are.</p></aside>
+      </section>
+      <section className="experience" aria-labelledby="experience-title">
+        <p id="experience-title">Contract project experience across leading AI organizations</p>
+        <div className="experience-list">{experience.map((company) => <span key={company}>{company}</span>)}</div>
+        <small>Work completed as an independent contract specialist. Company names describe project experience, not employment or endorsement.</small>
+      </section>
+      <section className="services section" id="services">
+        <div className="section-heading"><p className="eyebrow">How I help</p><h2>Less AI theater.<br />More useful systems.</h2></div>
+        <div className="service-list">{services.map(([number, title, text]) => <article className="service" key={number}><span>{number}</span><div><h3>{title}</h3><p>{text}</p></div></article>)}</div>
+      </section>
+      <section className="work section" id="work">
+        <div className="section-heading work-heading"><p className="eyebrow">Selected experience</p><h2>Hands-on work<br />inside the model lifecycle.</h2><p className="section-intro">NDA-safe examples from 26 AI training and evaluation projects. I can discuss methods and relevant experience; client-specific details remain confidential.</p></div>
+        <div className="project-grid">{projects.map(([type, title, text], index) => <article className="project" key={title}><span className="project-number">0{index + 1}</span><p className="project-type">{type}</p><h3>{title}</h3><p>{text}</p></article>)}</div>
+        <p className="work-footnote">Areas include RLHF, supervised fine-tuning, reasoning evaluation, multimodal evaluation, privacy, fact-checking, rubric design, and adversarial testing.</p>
+      </section>
+      <section className="about section" id="about">
+        <div className="about-title"><p className="eyebrow">About</p><h2>Precision is the throughline.</h2></div>
+        <div className="about-copy"><p>I started in science: validated protocols, nutritional and mineral analysis, and work where the details had to hold up. That foundation carried naturally into AI training and evaluation.</p><p>I combine that rigor with machine-learning training from Columbia Engineering and practical experience across language, vision, and safety-focused AI work. My job is not to make AI sound impressive. It is to help make it work better.</p><a className="text-link" href="https://laraven-gordon-resume.streamlit.app/" target="_blank" rel="noreferrer">View résumé <span aria-hidden="true">↗</span></a></div>
+      </section>
+      <section className="contact" id="contact"><p className="eyebrow">Have a system worth improving?</p><h2>Let’s make it<br /><em>more reliable.</em></h2><p>Tell me what your AI system needs to do better, and I’ll tell you whether I’m the right person to help.</p><a className="button button-primary" href="mailto:laraven.gordon@gmail.com?subject=AI%20project%20inquiry">Email La Raven <span aria-hidden="true">↗</span></a></section>
+    </main>
+    <footer><span>© {new Date().getFullYear()} La Raven Gordon</span><div><a href="https://www.linkedin.com/in/laraven-gordon/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/gordon-laraven" target="_blank" rel="noreferrer">GitHub</a></div></footer>
+  </div>
+);
 
 export default IndexPage;
-
-export const Head = () => <title>La Raven Gordon (Larav) | AI Brain Specialist</title>;
+export const Head = () => <title>La Raven Gordon | AI Evaluation Specialist</title>;
